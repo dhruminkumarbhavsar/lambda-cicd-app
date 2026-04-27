@@ -1,19 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lambda CI/CD</title>
+    <title>Lambda CI/CD Dashboard</title>
     <style>
         body {
-            text-align: center;
-            font-family: Arial;
-            background: linear-gradient(to right, #1e3c72, #2a5298);
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: white;
-            padding-top: 100px;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .status {
+            font-size: 22px;
+            color: #00ffcc;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .time {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #ffd700;
+        }
+
+        .pipeline {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .step {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .step:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
         }
     </style>
 </head>
+
 <body>
-    <h1>🚀 Lambda CI/CD Pipeline</h1>
-    <p>Deployment Successful 🎉</p>
+    <div class="container">
+        <h1>🚀 Lambda CI/CD Dashboard</h1>
+        <div class="subtitle">Automated Deployment Successful</div>
+
+        <div class="card">
+            <div class="status">✅ Deployment Completed</div>
+            <div class="time" id="time"></div>
+        </div>
+
+        <div class="pipeline">
+            <div class="step">📦 Source</div>
+            <div class="step">⚙️ Build</div>
+            <div class="step">🚀 Deploy</div>
+        </div>
+
+        <div class="footer">Powered by AWS CI/CD Pipeline</div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            document.getElementById("time").innerText =
+                "Last Updated: " + now.toLocaleString();
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
 </body>
 </html>
